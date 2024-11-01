@@ -1,0 +1,101 @@
+[
+   {
+        "login": "ToliiiIi",
+        "lastName": "Гераскин",
+        "firstName": "Петр",
+        "patronymic": "Владимирович",
+        "address": "ул. Центральная, д. 15, кв. 3",
+        "dateBirth": "11.12.1990",
+        "email": "Tolii@yandex.ru",
+        "phone": "89453762134",
+        "post": "мастер"
+    },
+    {
+        "login": "Anya1995",
+        "lastName": "Сидорова",
+        "firstName": "Анна",
+        "patronymic": "Ивановна",
+        "address": "ул. Ленина, д. 9, кв. 1",
+        "dateBirth": "05.03.1995",
+        "email": "Anya1995@mail.ru",
+        "phone": "89231234567",
+        "post": "администратор"
+    },
+    {
+        "login": "Viktor78",
+        "lastName": "Петров",
+        "firstName": "Виктор",
+        "patronymic": "Сергеевич",
+        "address": "пр. Мира, д. 24, кв. 5",
+        "dateBirth": "12.07.1978",
+        "email": "v.petrov@yandex.ru",
+        "phone": "89993456788",
+        "post": "инженер"
+    },
+    {
+        "login": "Kseniya88",
+        "lastName": "Алексеева",
+        "firstName": "Ксения",
+        "patronymic": "Павловна",
+        "address": "ул. Советская, д. 11, кв. 20",
+        "dateBirth": "22.10.1988",
+        "email": "kseniya.alexeeva@mail.ru",
+        "phone": "89056783421",
+        "post": "менеджер"
+    },
+    {
+        "login": "Roman.K",
+        "lastName": "Кузьмин",
+        "firstName": "Роман",
+        "patronymic": "Андреевич",
+        "address": "ул. Гагарина, д. 5, кв. 7",
+        "dateBirth": "15.05.1985",
+        "email": "roman.kuzmin@mail.ru",
+        "phone": "89345671234",
+        "post": "электрик"
+    },
+    {
+        "login": "Nika_star",
+        "lastName": "Морозова",
+        "firstName": "Вероника",
+        "patronymic": "Викторовна",
+        "address": "пер. Заречный, д. 2, кв. 8",
+        "dateBirth": "10.09.1992",
+        "email": "nika.morozova@yandex.ru",
+        "phone": "89214567890",
+        "post": "кассир"
+    },
+    {
+        "login": "ArtemCool",
+        "lastName": "Федоров",
+        "firstName": "Артем",
+        "patronymic": "Валерьевич",
+        "address": "ул. Московская, д. 14, кв. 12",
+        "dateBirth": "19.04.1987",
+        "email": "artem.fedorov@mail.ru",
+        "phone": "89876543211",
+        "post": "водитель"
+    },
+    {
+        "login": "IgorSharp",
+        "lastName": "Зайцев",
+        "firstName": "Игорь",
+        "patronymic": "Анатольевич",
+        "address": "пр. Победы, д. 8, кв. 4",
+        "dateBirth": "28.02.1983",
+        "email": "igor.zaytsev@mail.ru",
+        "phone": "89567891234",
+        "post": "сварщик"
+    },
+    {
+        "login": "Elena123",
+        "lastName": "Тихонова",
+        "firstName": "Елена",
+        "patronymic": "Александровна",
+        "address": "ул. Лермонтова, д. 7, кв. 11",
+        "dateBirth": "03.08.1996",
+        "email": "elena.tihonova@yandex.ru",
+        "phone": "89012345678",
+        "post": "повар"
+    }
+]

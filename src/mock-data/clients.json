@@ -1,0 +1,112 @@
+[
+  {
+    "lastName": "Иванов",
+    "firstName": "Иван",
+    "patronymic": "Иванович",
+    "tariff": "Тариф2",
+    "status": "в обработке",
+    "phone": "89123456789",
+    "email": "ivanov@mail.ru",
+    "dateBirth": "05.03.1985",
+    "address": "ул. Ленина, д. 15"
+  },
+  {
+    "lastName": "Петров",
+    "firstName": "Петр",
+    "patronymic": "Петрович",
+    "tariff": "Тариф3",
+    "status": "отменено",
+    "phone": "89234567890",
+    "email": "petrov@gmail.com",
+    "dateBirth": "22.11.1990",
+    "address": "пр. Мира, д. 34"
+  },
+  {
+    "lastName": "Сидорова",
+    "firstName": "Анна",
+    "patronymic": "Михайловна",
+    "tariff": "Тариф1",
+    "status": "готово",
+    "phone": "89345678901",
+    "email": "sidorova@yandex.ru",
+    "dateBirth": "14.07.1988",
+    "address": "ул. Гагарина, д. 5"
+  },
+  {
+    "lastName": "Кузнецов",
+    "firstName": "Алексей",
+    "patronymic": "Викторович",
+    "tariff": "Тариф2",
+    "status": "в обработке",
+    "phone": "89456789012",
+    "email": "kuznetsov@mail.ru",
+    "dateBirth": "30.09.1995",
+    "address": "ул. Советская, д. 23"
+  },
+  {
+    "lastName": "Морозова",
+    "firstName": "Елена",
+    "patronymic": "Александровна",
+    "tariff": "Тариф3",
+    "status": "отменено",
+    "phone": "89567890123",
+    "email": "morozova@gmail.com",
+    "dateBirth": "18.04.1992",
+    "address": "пр. Победы, д. 11"
+  },
+  {
+    "lastName": "Васильев",
+    "firstName": "Дмитрий",
+    "patronymic": "Сергеевич",
+    "tariff": "Тариф1",
+    "status": "готово",
+    "phone": "89678901234",
+    "email": "vasilev@yandex.ru",
+    "dateBirth": "02.12.1987",
+    "address": "ул. Кирова, д. 45"
+  },
+  {
+    "lastName": "Николаева",
+    "firstName": "Ольга",
+    "patronymic": "Ивановна",
+    "tariff": "Тариф2",
+    "status": "в обработке",
+    "phone": "89789012345",
+    "email": "nikolaeva@mail.ru",
+    "dateBirth": "25.06.1993",
+    "address": "ул. Красноармейская, д. 7"
+  },
+  {
+    "lastName": "Соколов",
+    "firstName": "Андрей",
+    "patronymic": "Владимирович",
+    "tariff": "Тариф3",
+    "status": "отменено",
+    "phone": "89890123456",
+    "email": "sokolov@gmail.com",
+    "dateBirth": "11.08.1991",
+    "address": "пр. Строителей, д. 19"
+  },
+  {
+    "lastName": "Лебедева",
+    "firstName": "Мария",
+    "patronymic": "Сергеевна",
+    "tariff": "Тариф1",
+    "status": "готово",
+    "phone": "89901234567",
+    "email": "lebedeva@yandex.ru",
+    "dateBirth": "07.02.1994",
+    "address": "ул. Парковая, д. 3"
+  },
+  {
+    "lastName": "Козлов",
+    "firstName": "Константин",
+    "patronymic": "Иванович",
+    "tariff": "Тариф2",
+    "status": "в обработке",
+    "phone": "89012345678",
+    "email": "kozlov@mail.ru",
+    "dateBirth": "19.10.1989",
+    "address": "ул. Московская, д. 56"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "lastName": "Фамилия",
+  "firstName": "Имя",
+  "patronymic": "Отчество",
+  "tariff": "Тариф",
+  "status": "Статус",
+  "phone": "Телефон",
+  "email": "Почта",
+  "dateBirth": "ДР",
+  "address": "Адрес"
+}

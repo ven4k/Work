@@ -1,0 +1,11 @@
+{
+  "login": "Логин",
+  "lastName": "Фамилия",
+  "firstName": "Имя",
+  "patronymic": "Отчество",
+  "address": "Адресс",
+  "dateBirth": "ДР",
+  "email": "Почта",
+  "phone": "Телефон",
+  "post": "Должность"
+}

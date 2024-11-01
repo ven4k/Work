@@ -1,0 +1,22 @@
+[
+  {
+    "tariffName": "тариф1",
+    "tariffCost": "5500",
+    "tariffDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse repellat voluptate earum a temporibus numquam alias eaque harum tempore recusandae amet iusto ipsam, dolores incidunt possimus odit, corrupti in cum!"
+  },
+  {
+    "tariffName": "тариф2",
+    "tariffCost": "5500",
+    "tariffDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse repellat voluptate earum a temporibus numquam alias eaque harum tempore recusandae amet iusto ipsam, dolores incidunt possimus odit, corrupti in cum!"
+  },
+  {
+    "tariffName": "тариф3",
+    "tariffCost": "5500",
+    "tariffDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse repellat voluptate earum a temporibus numquam alias eaque harum tempore recusandae amet iusto ipsam, dolores incidunt possimus odit, corrupti in cum!"
+  },
+  {
+    "tariffName": "тариф4",
+    "tariffCost": "5500",
+    "tariffDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse repellat voluptate earum a temporibus numquam alias eaque harum tempore recusandae amet iusto ipsam, dolores incidunt possimus odit, corrupti in cum!"
+  }
+]
