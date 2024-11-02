@@ -3,7 +3,10 @@ import './style.css'
 import App from './App.vue'
 import router from './router/router'
 import 'normalize.css';
-import Notifications from '@kyvg/vue3-notification'
+import Notifications from './Notification/Notification.vue'
 
-createApp(App).use(router).use(Notifications).mount('#app')
+const app = createApp(App)
+app.use(router)
+app.component(Notifications)
+app.mount('#app')
 

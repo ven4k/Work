@@ -12,7 +12,6 @@
   <PopupWrapper :isOpenPopup="isOpenAddFormPopup" @close="handleTogglePopup">
     <AddForm :data="employeesTableHeaders" @addData="handleAddData"/>
   </PopupWrapper>
-  <notifications closeOnClick position="top right" />
 </template>
 
 <script setup>
@@ -35,6 +34,11 @@ const handleTogglePopup = () => {
 
 const handleAddData = (data) => {
   employeesBodyData.value = [...employeesBodyData.value, data]
+  notify({
+    duration: 3000,
+    type: 'success',
+    title: 'Сотрудник добавлен'
+  })
 };
 const handleDeleteData = (data) => {
   employeesBodyData.value = employeesBodyData.value.filter(
@@ -42,6 +46,8 @@ const handleDeleteData = (data) => {
   );
   notify({
     text: "Сотрудник удалён",
+    type: 'warn',
+    duration: 3000,
   });
 };
 </script>

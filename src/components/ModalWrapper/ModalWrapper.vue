@@ -60,7 +60,7 @@ watch(() => props.isOpenModal, (newValue) => {
   background-color: #fff;
   padding: 20px;
   border: 6px;
-  max-width: 1200px;
+  max-width: fit-content;
   max-height: 800px;
   border-radius: 8px;
   overflow-y: auto;

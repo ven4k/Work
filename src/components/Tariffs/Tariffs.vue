@@ -12,7 +12,6 @@
   <PopupWrapper :isOpenPopup="isOpenAddFormPopup" @close="handleTogglePopup">
     <AddForm :data="tariffsTableHeaders" @addData="handleAddData" />
   </PopupWrapper>
-  <notifications closeOnClick position="top right" />
 </template>
 
 <script setup>
@@ -38,11 +37,8 @@ const handleAddData = (data) => {
 };
 const handleDeleteData = (data) => {
   tariffsBodyData.value = tariffsBodyData.value.filter(
-    (el) => el.phone !== data.phone
+    (el) => el.tariffId !== data.tariffId
   );
-  notify({
-    text: "Клиент удалён",
-  });
 };
 </script>
 

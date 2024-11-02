@@ -12,7 +12,6 @@
   <PopupWrapper :isOpenPopup="isOpenAddFormPopup" @close="handleTogglePopup">
     <AddForm :data="clientsTableHeaders" @addData="handleAddData" />
   </PopupWrapper>
-  <notifications closeOnClick position="top right" />
 </template>
 
 <script setup>
