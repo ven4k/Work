@@ -25,17 +25,31 @@ import { useRouter } from "vue-router";
 import Clients from "../Clients/Clients.vue";
 import Employees from "../Employees/Employees.vue";
 import ModalWrapper from "../ModalWrapper/ModalWrapper.vue";
-import Tariffs from "../Tariffs/Tariffs.vue";
+import Catalog from "../Catalog/Catalog.vue";
+import ApplicationForm from "../ApplicationForm/ApplicationForm.vue";
 
 const router = useRouter();
 
 const cards = [
-  { cardName: "Услуги", description: "Услуги и абоненты", component: Tariffs },
-  { cardName: "Клиенты", description: "Учет клиентов", component: Clients },
+  {
+    cardName: "Каталог",
+    description: "Каталог запчастей",
+    component: Catalog,
+  },
+  {
+    cardName: "Клиенты",
+    description: "Учет клиентов",
+    component: Clients,
+  },
   {
     cardName: "Сотрудники",
     description: "Учет работников",
     component: Employees,
+  },
+  {
+    cardName: "Заявки",
+    description: "Заявки на работы",
+    component: ApplicationForm,
   },
 ];
 

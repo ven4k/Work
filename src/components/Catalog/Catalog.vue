@@ -1,31 +1,31 @@
 <template>
   <TableWrapper
-    :theader="Object.values(tariffsTableHeaders)"
-    :tbody="tariffsBodyData"
-    addBtnText="Добавить тариф"
-    tableTitle="Таблица тарифов"
+    :theader="Object.values(catalogTableHeader)"
+    :tbody="catalogBodyData"
+    addBtnText="Добавить запчасть"
+    tableTitle="Каталог запчастей"
     isPossibleAddItem
     isPossibleDeleteItem
     @deleteData="handleDeleteData"
     @addData="handleTogglePopup"
   />
-  <PopupWrapper :isOpenPopup="isOpenAddFormPopup" @close="handleTogglePopup">
-    <AddForm :data="tariffsTableHeaders" @addData="handleAddData" />
+  <PopupWrapper :isOpenPopup="isOpenAddFormPopup" @close="handleTogglePopup" title="Каталог">
+    <AddForm :data="catalogTableHeader" @addData="handleAddData" />
   </PopupWrapper>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
-import tariffs from "../../mock-data/tariffs.json";
-import tariffsTableHeaders from "../../mock-data/tariffsTableHeaders.json";
+import catalog from "../../mock-data/catalog.json";
+import catalogTableHeader from "../../mock-data/catalogTableHeader.json";
 import { useNotification } from "@kyvg/vue3-notification";
 import AddForm from "../AddForm/AddForm.vue";
 import PopupWrapper from "../PopupWrapper/PopupWrapper.vue";
 
 const { notify } = useNotification();
 
-const tariffsBodyData = ref(tariffs);
+const catalogBodyData = ref(catalog);
 
 const isOpenAddFormPopup = ref(false);
 
@@ -33,10 +33,10 @@ const handleTogglePopup = () => {
   isOpenAddFormPopup.value = !isOpenAddFormPopup.value;
 };
 const handleAddData = (data) => {
-  tariffsBodyData.value = [...tariffsBodyData.value, data]
+  catalogBodyData.value = [...catalogBodyData.value, data]
 };
 const handleDeleteData = (data) => {
-  tariffsBodyData.value = tariffsBodyData.value.filter(
+  catalogBodyData.value = catalogBodyData.value.filter(
     (el) => el.tariffId !== data.tariffId
   );
 };

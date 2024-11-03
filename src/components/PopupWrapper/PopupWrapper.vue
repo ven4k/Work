@@ -1,5 +1,6 @@
 <template>
   <div class="popup__wrapper" v-if="isOpenPopup">
+    <h2 class="popup__title">{{ title }}</h2>
     <slot></slot>
     <div class="popup__close" @click="$emit('close')">X</div>
   </div>
@@ -8,7 +9,8 @@
 <script setup>
 defineProps({
   isOpenPopup: { type: Boolean, default: false },
-})
+  title: { type: String, default: "" },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -30,5 +32,8 @@ defineProps({
   width: 40px;
   height: 40px;
   text-align: center;
+}
+.popup__title {
+  font-size: 32px;
 }
 </style>

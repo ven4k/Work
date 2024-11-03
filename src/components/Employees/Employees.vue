@@ -9,7 +9,7 @@
     @addData="handleTogglePopup"
     @deleteData="handleDeleteData"
   />
-  <PopupWrapper :isOpenPopup="isOpenAddFormPopup" @close="handleTogglePopup">
+  <PopupWrapper :isOpenPopup="isOpenAddFormPopup" @close="handleTogglePopup" title="Сотрудники">
     <AddForm :data="employeesTableHeaders" @addData="handleAddData"/>
   </PopupWrapper>
 </template>

@@ -1,0 +1,15 @@
+{
+    "application_id": "Номер заявки",
+    "fullname": "ФИО",
+    "phone": "Телефон",
+    "email": "Почта",
+    "post": "Должность",
+    "catalog_id": "Каталожный номер",
+    "addication_id": "Доп. Номер",
+    "work_type": "Тип работы",
+    "tariff_name": "Наименование",
+    "emploeyee": "Исполнитель",
+    "status": "Статус",
+    "comment":"Коментарий"
+}
+
