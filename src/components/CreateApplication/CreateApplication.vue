@@ -5,7 +5,7 @@
       <select v-model="formValues[element.dataName]">
         <option value="">Не выбрано</option>
         <option v-for="item in element.data" :value="item.name">
-          {{ item.name }}
+          {{ item }}
         </option>
       </select>
     </div>
@@ -24,23 +24,17 @@ import employees from "../../mock-data/employees.json";
 const emit = defineEmits(["close", "addData"]);
 const clientsData = ref(
   clients.map((item) => {
-    return {
-      name: `${item.lastName} ${item.firstName} ${item.patronymic} ${item.phone}`,
-    };
+    return `${item.lastName} ${item.firstName} ${item.patronymic} ${item.phone}`
   })
 );
 const employeesData = ref(
   employees.map((item) => {
-    return {
-      name: `${item.lastName} ${item.firstName} ${item.patronymic} ${item.phone}`,
-    };
+    return `${item.lastName} ${item.firstName} ${item.patronymic} ${item.phone}`;
   })
 );
 const catalogData = ref(
   catalog.map((item) => {
-    return {
-      name: `${item.name} ${item.color} ${item.catalogAddication_id}`,
-    };
+    return `${item.name} ${item.color} ${item.catalogAddication_id}`
   })
 );
 const workType = ref([
