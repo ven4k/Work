@@ -5,7 +5,8 @@
         <input v-model="formValues[key]"/>
         <label>{{ value }}</label>
       </div>
-      <MainButton :disabled="hasAnyFilledField" @click.stop.prevent="handleAddData">Добавить</MainButton>
+      <MainButton :disabled="!hasEveryFilledField" @click.stop.prevent="handleAddData">Добавить</MainButton>
+      <span><small>*Необходимо заполнить все поля</small></span>
     </div>
   </form>
 </template>
@@ -20,15 +21,18 @@ const props = defineProps({
 const emit = defineEmits([
   'addData'
 ])
-const formValues = ref({})
+const formValues = ref(Object.fromEntries(Object.entries(props.data).map(([key]) => [key, ''])))
 
 const handleAddData = () => {
   emit('addData', formValues.value)
   formValues.value = {}
 }
-const hasAnyFilledField = computed(() => {
-  return !Object.values(formValues.value).some(value => value && value.trim() !== '');
-});
+const hasEveryFilledField = computed(() => {
+  return Object.values(formValues.value).every(value => {
+    return value !== null && value !== undefined && value.trim() !== '';
+  });
+})
+
 </script>
 
 <style lang="scss" scoped>
