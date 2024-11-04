@@ -4,8 +4,8 @@
     :tbody="catalogBodyData"
     addBtnText="Добавить запчасть"
     tableTitle="Каталог запчастей"
-    isPossibleAddItem
-    isPossibleDeleteItem
+    :isPossibleAddItem="isAdmin"
+    :isPossibleDeleteItem="isAdmin"
     @deleteData="handleDeleteData"
     @addData="handleTogglePopup"
   />
@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
 import catalog from "../../mock-data/catalog.json";
 import catalogTableHeader from "../../mock-data/catalogTableHeader.json";
@@ -23,6 +23,9 @@ import { useNotification } from "@kyvg/vue3-notification";
 import AddForm from "../AddForm/AddForm.vue";
 import PopupWrapper from "../PopupWrapper/PopupWrapper.vue";
 
+defineProps({
+  isAdmin: { type: Boolean, default: true }
+})
 const { notify } = useNotification();
 
 const catalogBodyData = ref(catalog);
@@ -35,6 +38,16 @@ const handleTogglePopup = () => {
 const handleAddData = (data) => {
   catalogBodyData.value = [...catalogBodyData.value, data]
 };
+onMounted(() => {
+  const localStorageCatalog = localStorage.getItem('catalog')
+  const parsedLocalStorageCatalog = JSON.parse(localStorageCatalog)
+  if (localStorageCatalog) {
+    employeesBodyData.value = parsedLocalStorageCatalog
+  }
+})
+onUnmounted(() => {
+  localStorage.setItem('catalog', JSON.stringify(catalogBodyData.value))
+})
 const handleDeleteData = (data) => {
   catalogBodyData.value = catalogBodyData.value.filter(
     (el) => el.tariffId !== data.tariffId

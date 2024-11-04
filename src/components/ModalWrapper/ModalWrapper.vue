@@ -1,6 +1,6 @@
 <template>
   <div class="modal__wrapper" v-if="isOpenModal" @click.stop="$emit('closeModal')" @keydown.esc="closeByEsc" tabindex="0" ref="modalElement">
-    <div class="modal__contentWrapper"@click.stop>
+    <div class="modal__contentWrapper" @click.stop>
       <div class="modal__content" >
         <slot></slot>
       </div>

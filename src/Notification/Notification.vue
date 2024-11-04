@@ -43,7 +43,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .custom-notification {
   position: relative;
   padding: 8px;
@@ -87,5 +87,21 @@ export default {
   position: absolute;
   top: 2px;
   right: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: inherit;
+  padding: 0;
+  line-height: 1;
+  outline: none;
+
+  &:hover {
+    color: #000;
+  }
+
+  .fa {
+    font-size: 16px;
+  }
 }
 </style>

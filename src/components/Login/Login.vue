@@ -32,8 +32,10 @@ const isWrongData = ref(false);
 
 onMounted(() => {
   localStorage.setItem("login", "admin");
+  localStorage.setItem("login2", "master");
   localStorage.setItem("password", "admin");
-  if(localStorage.getItem('isLogged')) {
+  localStorage.setItem("password2", "master");
+  if(localStorage.getItem('isLogged') || localStorage.getItem('isLoggedMaster')) {
     router.replace('/main-menu')
   }
 });
@@ -41,6 +43,8 @@ onMounted(() => {
 const handleClickSubmitForm = () => {
   const lsLogin = localStorage.getItem("login");
   const lsPassword = localStorage.getItem("password");
+  const lsLogin2 = localStorage.getItem("login2");
+  const lsPassword2 = localStorage.getItem("password2");
   if (login.value !== lsLogin || password.value !== lsPassword) {
     isWrongData.value = true;
     setTimeout(() => {
@@ -48,6 +52,17 @@ const handleClickSubmitForm = () => {
     }, 3000)
   } else {
     localStorage.setItem('isLogged', `${login.value}${password.value}`)
+    localStorage.setItem('isLoggedMaster', '')
+    router.push({name: 'MainMenu'})
+  }
+  if((login.value !== lsLogin2 || password.value !== lsPassword2)) {
+    isWrongData.value = true;
+    setTimeout(() => {
+      isWrongData.value = false
+    }, 3000)
+  } else {
+    localStorage.setItem('isLogged', '')
+    localStorage.setItem('isLoggedMaster', `${login.value}${password.value}`)
     router.push({name: 'MainMenu'})
   }
 };
@@ -62,6 +77,7 @@ const handleClickSubmitForm = () => {
   justify-content: space-between;
   gap: 20px;
   padding: 40px;
+  background-color: #fff;
 }
 .form__inputsWrapper {
   display: flex;

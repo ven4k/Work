@@ -4,8 +4,8 @@
     :tbody="clientsBodyData"
     tableTitle="Таблица клиентов"
     addBtnText="Добавить клиента"
-    isPossibleAddItem
-    isPossibleDeleteItem
+    :isPossibleAddItem="isAdmin"
+    :isPossibleDeleteItem="isAdmin"
     @addData="handleTogglePopup"
     @deleteData="handleDeleteData"
   />
@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import clients from "../../mock-data/clients.json";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
 import clientsTableHeaders from "../../mock-data/clientsTableHeaders.json";
@@ -23,6 +23,9 @@ import { useNotification } from "@kyvg/vue3-notification";
 import AddForm from "../AddForm/AddForm.vue";
 import PopupWrapper from "../PopupWrapper/PopupWrapper.vue";
 
+defineProps({
+  isAdmin: { type: Boolean, default: true }
+})
 const { notify } = useNotification();
 
 const clientsBodyData = ref(clients);
@@ -42,6 +45,17 @@ const handleDeleteData = (data) => {
     text: "Клиент удалён",
   });
 };
+
+onMounted(() => {
+  const localStorageClients = localStorage.getItem('clients')
+  const parsedLocalStorageClients = JSON.parse(localStorageClients)
+  if (localStorageClients) {
+    clientsBodyData.value = parsedLocalStorageClients
+  }
+})
+onUnmounted(() => {
+  localStorage.setItem('clients', JSON.stringify(clientsBodyData.value))
+})
 </script>
 
 <style lang="scss" scoped>

@@ -7,5 +7,6 @@
   "phone": "Телефон",
   "email": "Почта",
   "dateBirth": "ДР",
-  "address": "Адрес"
+  "address": "Адрес",
+  "post": "Должность"
 }

@@ -4,8 +4,8 @@
     :theader="Object.values(employeesTableHeaders)"
     :tbody="employeesBodyData"
     addBtnText="Добавить сотрудника"
-    isPossibleAddItem
-    isPossibleDeleteItem
+    :isPossibleAddItem="isAdmin"
+    :isPossibleDeleteItem="isAdmin"
     @addData="handleTogglePopup"
     @deleteData="handleDeleteData"
   />
@@ -15,13 +15,17 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
 import employees from "../../mock-data/employees.json";
 import employeesTableHeaders from "../../mock-data/employeesTableHeaders.json";
 import { useNotification } from "@kyvg/vue3-notification";
 import AddForm from "../AddForm/AddForm.vue";
 import PopupWrapper from "../PopupWrapper/PopupWrapper.vue";
+
+defineProps({
+  isAdmin: { type: Boolean, default: true }
+})
 
 const { notify } = useNotification();
 
@@ -50,4 +54,14 @@ const handleDeleteData = (data) => {
     duration: 3000,
   });
 };
+onMounted(() => {
+  const localStorageEmployees = localStorage.getItem('employees')
+  const parsedLocalStorageEmployees = JSON.parse(localStorageEmployees)
+  if (localStorageEmployees) {
+    employeesBodyData.value = parsedLocalStorageEmployees
+  }
+})
+onUnmounted(() => {
+  localStorage.setItem('employees', JSON.stringify(employeesBodyData.value))
+})
 </script>
