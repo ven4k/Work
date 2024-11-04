@@ -17,7 +17,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
-import employees from "../../mock-data/employees.json";
 import employeesTableHeaders from "../../mock-data/employeesTableHeaders.json";
 import { useNotification } from "@kyvg/vue3-notification";
 import AddForm from "../AddForm/AddForm.vue";
@@ -30,7 +29,7 @@ defineProps({
 const store = useStore()
 const { notify } = useNotification();
 
-const employeesBodyData = ref(employees);
+const employeesBodyData = ref([]);
 const isOpenAddFormPopup = ref(false);
 
 const handleTogglePopup = () => {
@@ -56,11 +55,7 @@ const handleDeleteData = (data) => {
   });
 };
 onMounted(() => {
-  const localStorageEmployees = localStorage.getItem('employees')
-  const parsedLocalStorageEmployees = JSON.parse(localStorageEmployees)
-  if (localStorageEmployees) {
-    employeesBodyData.value = parsedLocalStorageEmployees
-  }
+  employeesBodyData.value = store.state.employees
 })
 onUnmounted(() => {
   store.commit('updateEmployees', employeesBodyData.value)

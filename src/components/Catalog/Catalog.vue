@@ -17,7 +17,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
-import catalog from "../../mock-data/catalog.json";
 import catalogTableHeader from "../../mock-data/catalogTableHeader.json";
 import { useNotification } from "@kyvg/vue3-notification";
 import AddForm from "../AddForm/AddForm.vue";
@@ -30,7 +29,7 @@ defineProps({
 const store = useStore()
 const { notify } = useNotification();
 
-const catalogBodyData = ref(catalog);
+const catalogBodyData = ref([]);
 
 const isOpenAddFormPopup = ref(false);
 
@@ -39,13 +38,14 @@ const handleTogglePopup = () => {
 };
 const handleAddData = (data) => {
   catalogBodyData.value = [...catalogBodyData.value, data]
+  notify({
+    duration: 3000,
+    type: 'success',
+    title: 'Каталог обновлён'
+  })
 };
 onMounted(() => {
-  const localStorageCatalog = localStorage.getItem('catalog')
-  const parsedLocalStorageCatalog = JSON.parse(localStorageCatalog)
-  if (localStorageCatalog) {
-    catalogBodyData.value = parsedLocalStorageCatalog
-  }
+  catalogBodyData.value = store.state.catalog
 })
 onUnmounted(() => {
   store.commit('updateCatalog', catalogBodyData.value)
