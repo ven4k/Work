@@ -30,16 +30,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useNotification } from "@kyvg/vue3-notification";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
 import applications from "../../mock-data/applications.json";
 import applicationTableHeader from "../../mock-data/applicationsTableHeaders.json";
 import PopupWrapper from "../PopupWrapper/PopupWrapper.vue";
 import CreateApplication from "../CreateApplication/CreateApplication.vue";
-import clientsJSON from "../../mock-data/clients.json";
-import employeesJSON from "../../mock-data/employees.json";
-import catalogJSON from "../../mock-data/catalog.json";
+
+import { useStore } from "vuex";
+
+const store = useStore()
+
+const clientsJSON = computed(() => store.state.clients)
+const employeesJSON = computed(() => store.state.employees)
+const catalogJSON = computed(() => store.state.catalog)
 
 defineProps({
   isAdmin: { type: Boolean, default: true }
@@ -77,10 +82,10 @@ const handleAddData = (data) => {
 
   const addEmployeFullName = employee?.split(" ").slice(0, 3).join(" ");
 
-  const catalogData = catalogJSON.find(
+  const catalogData = catalogJSON.value.find(
     (el) => el.catalogAddication_id == addCatalogAddicationId
   );
-  const clientData = clientsJSON.find((el) => el.phone == addClientPhone);
+  const clientData = clientsJSON.value.find((el) => el.phone == addClientPhone);
 
   const addData = {
     application_id: Date.now().toString().slice(-6),
@@ -122,8 +127,6 @@ const handleUpdateTableData = (status, applicationId) => {
     }
     return el;
   });
-
-  console.log(applicationsBodyData.value)
 };
 
 onMounted(() => {

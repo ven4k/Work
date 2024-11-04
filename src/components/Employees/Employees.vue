@@ -22,11 +22,12 @@ import employeesTableHeaders from "../../mock-data/employeesTableHeaders.json";
 import { useNotification } from "@kyvg/vue3-notification";
 import AddForm from "../AddForm/AddForm.vue";
 import PopupWrapper from "../PopupWrapper/PopupWrapper.vue";
+import { useStore } from "vuex";
 
 defineProps({
   isAdmin: { type: Boolean, default: true }
 })
-
+const store = useStore()
 const { notify } = useNotification();
 
 const employeesBodyData = ref(employees);
@@ -62,6 +63,7 @@ onMounted(() => {
   }
 })
 onUnmounted(() => {
+  store.commit('updateEmployees', employeesBodyData.value)
   localStorage.setItem('employees', JSON.stringify(employeesBodyData.value))
 })
 </script>

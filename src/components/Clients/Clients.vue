@@ -22,10 +22,12 @@ import clientsTableHeaders from "../../mock-data/clientsTableHeaders.json";
 import { useNotification } from "@kyvg/vue3-notification";
 import AddForm from "../AddForm/AddForm.vue";
 import PopupWrapper from "../PopupWrapper/PopupWrapper.vue";
+import { useStore } from "vuex";
 
 defineProps({
   isAdmin: { type: Boolean, default: true }
 })
+const store = useStore()
 const { notify } = useNotification();
 
 const clientsBodyData = ref(clients);
@@ -54,6 +56,7 @@ onMounted(() => {
   }
 })
 onUnmounted(() => {
+  store.commit('updateClients', clientsBodyData.value);
   localStorage.setItem('clients', JSON.stringify(clientsBodyData.value))
 })
 </script>
