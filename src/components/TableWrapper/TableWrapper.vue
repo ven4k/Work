@@ -14,10 +14,13 @@
         <tbody>
           <tr v-for="(row, rowIndex) in tbody" :key="rowIndex">
             <td v-for="(key, cellIndex) in Object.keys(row)" :key="cellIndex">
-              <span v-if="key !== 'status'">
+              <span v-if="!isApplication">
                 {{ row[key] ? row[key] : "-" }}
               </span>
-              <select v-if="key === 'status'" @change="handleUpdateTableData($event, row.application_id)">
+              <span v-if="key !== 'status' && isApplication">
+                {{ row[key] ? row[key] : "-" }}
+              </span>
+              <select v-if="key === 'status' && isApplication" @change="handleUpdateTableData($event, row.application_id)">
                 <option value="">Не выбрано</option>
                 <option
                   :selected="item === row.status"

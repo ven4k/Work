@@ -42,7 +42,7 @@ onMounted(() => {
   const localStorageCatalog = localStorage.getItem('catalog')
   const parsedLocalStorageCatalog = JSON.parse(localStorageCatalog)
   if (localStorageCatalog) {
-    employeesBodyData.value = parsedLocalStorageCatalog
+    catalogBodyData.value = parsedLocalStorageCatalog
   }
 })
 onUnmounted(() => {
