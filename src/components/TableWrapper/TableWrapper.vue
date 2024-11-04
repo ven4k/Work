@@ -59,7 +59,7 @@ defineProps({
 });
 const emit = defineEmits(["addData", "deleteData", "updateTableData"]);
 const handleUpdateTableData = (status, applicationId) => {
-  emit("updateTableData", status, applicationId);
+  emit("updateTableData", status.target.value, applicationId);
 };
 </script>
 

@@ -96,7 +96,6 @@ const handleAddData = (data) => {
     status: status,
     comment: comment || "-",
   };
-  console.log("addData", addData);
 
   applicationsBodyData.value = [...applicationsBodyData.value, addData];
   notify({
@@ -117,11 +116,16 @@ const handleDeleteData = (data) => {
 };
 
 const handleUpdateTableData = (status, applicationId) => {
-  const targetTableRow = applicationsBodyData.value.find(el => el.application_id === applicationId)
-  if (targetTableRow) {
-    targetTableRow.status = status;
-  } 
-}
+  applicationsBodyData.value = applicationsBodyData.value.map(el => {
+    if (el.application_id === applicationId) {
+      return { ...el, status };
+    }
+    return el;
+  });
+
+  console.log(applicationsBodyData.value)
+};
+
 onMounted(() => {
   const localStorageApplications = localStorage.getItem('applications')
   const parsedLocalStorageApplications = JSON.parse(localStorageApplications)
