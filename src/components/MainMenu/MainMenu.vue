@@ -5,15 +5,16 @@
       class="mainMenu__card"
       :key="index"
       @click="handleClickCard(index)"
-    > 
-      <img :src="getImageUrl(item.img)" alt=""/>
+    >
+      <img :src="getImageUrl(item.img)" alt="" />
       <div>{{ item.cardName }}</div>
       <div style="font-size: 10px">{{ item.description }}</div>
     </div>
+    <div class="role">{{ role }}</div>
     <div class="exitBtn" @click="handleClickExit">Выход</div>
     <ModalWrapper :isOpenModal="isOpenModal" @closeModal="handleCloseModal">
       <template v-slot:default>
-        <component :is="cards[choosedCard].component" :isAdmin="isAdmin"/>
+        <component :is="cards[choosedCard].component" :isAdmin="isAdmin" />
       </template>
     </ModalWrapper>
   </div>
@@ -29,40 +30,44 @@ import Catalog from "../Catalog/Catalog.vue";
 import ApplicationForm from "../ApplicationForm/ApplicationForm.vue";
 
 const router = useRouter();
-const isAdmin = ref(true)
+const isAdmin = ref(true);
+const role = ref('')
 
-const cards = [
+const cards = ref([
   {
     cardName: "Каталог",
     description: "Каталог запчастей",
     component: Catalog,
-    img: 'catalog.svg'
-  },
-  {
-    cardName: "Клиенты",
-    description: "Учет клиентов",
-    component: Clients,
-    img: 'clients.svg'
+    img: "catalog.svg",
   },
   {
     cardName: "Сотрудники",
     description: "Учет работников",
     component: Employees,
-    img: 'workers.svg'
+    img: "workers.svg",
   },
   {
     cardName: "Заявки",
     description: "Заявки на работы",
     component: ApplicationForm,
-    img: 'applications.svg'
+    img: "applications.svg",
   },
-];
+]);
 onMounted(() => {
-  if(localStorage.getItem('isLogged')) {
-   return isAdmin.value = true
+  if (localStorage.getItem("isLogged")) {
+    isAdmin.value = true;
+    role.value = 'Admin'
+    cards.value.push({
+      cardName: "Клиенты",
+      description: "Учет клиентов",
+      component: Clients,
+      img: "clients.svg",
+    });
+  } else {
+    role.value = 'Master'
+    isAdmin.value = false;
   }
-  isAdmin.value = false
-})
+});
 const getImageUrl = (img) => {
   return new URL(`../../assets/${img}`, import.meta.url).href;
 };
@@ -78,8 +83,8 @@ const handleCloseModal = () => {
 };
 
 const handleClickExit = () => {
-  localStorage.removeItem('isLogged');
-  localStorage.removeItem('isLoggedMaster');
+  localStorage.removeItem("isLogged");
+  localStorage.removeItem("isLoggedMaster");
 
   router.push("/");
 };
@@ -88,7 +93,7 @@ const handleClickExit = () => {
 <style lang="scss" scoped>
 .mainMenu__card {
   background-color: #fff;
-  border: 2px solid #009879; 
+  border: 2px solid #009879;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 160px;
@@ -124,15 +129,20 @@ const handleClickExit = () => {
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
-  font-size: 16px; 
+  font-size: 16px;
   cursor: pointer;
   top: 8px;
   right: 8px;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #e55039; 
+    background-color: #e55039;
   }
 }
-
+.role {
+  position: absolute; 
+  top: 18px;
+  right: 60px;
+  width: 100px;
+}
 </style>
