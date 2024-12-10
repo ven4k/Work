@@ -11,9 +11,10 @@
         <input type="password" name="password" placeholder="Пароль" v-model="password" required/>
         <i class="fa fa-lock"></i>
       </p>
+      <div v-if="isWrongData" class="form__wrongData">Неправильный логин или пароль!</div>
       <p class="submit"><input type="submit" @click.stop.prevent="handleClickSubmitForm" name="sent" value="Войти"></p>
     </form>
-  </div> <!--/ Login-->
+  </div>
 </template>
 
 <script setup>
@@ -27,6 +28,7 @@ const password = ref("");
 const isWrongData = ref(false);
 
 onMounted(() => {
+  sessionStorage.clear()
   sessionStorage.setItem("login", "admin");
   sessionStorage.setItem("login2", "master");
   sessionStorage.setItem("password", "admin");
@@ -330,16 +332,13 @@ input[type="submit"]:focus {
 .form input[type="checkbox"] {
   display: none;
 }
-/*.form input[type="checkbox"] + label span {
-    display:inline-block;
-    width:16px;
-    height:16px;
-    margin: -2px 4px 0 50px;
-    vertical-align:middle;
-    background:url("../img/checkbox.png") left top no-repeat;
-    cursor:pointer;
+.form__wrongData {
+  color: red;
+  padding: 4px;
+  border-radius: 6px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 94px;
 }
-.form input[type="checkbox"]:checked + label span {
-    background:url("../img/checkbox.png") -16px top no-repeat;
-}*/
 </style>
