@@ -11,9 +11,9 @@ import catalogJSON from './mock-data/catalog.json'
 
 const store = createStore({
   state: {
-    clients: JSON.parse(localStorage.getItem('clients')) || clientJSON,
-    employees: JSON.parse(localStorage.getItem('employees')) || employeesJSON,
-    catalog: JSON.parse(localStorage.getItem('catalog')) || catalogJSON,
+    clients: JSON.parse(sessionStorage.getItem('clients')) || clientJSON,
+    employees: JSON.parse(sessionStorage.getItem('employees')) || employeesJSON,
+    catalog: JSON.parse(sessionStorage.getItem('catalog')) || catalogJSON,
   },
   mutations: {
     updateClients(state, payload) {

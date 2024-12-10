@@ -49,7 +49,7 @@ onMounted(() => {
 })
 onUnmounted(() => {
   store.commit('updateCatalog', catalogBodyData.value)
-  localStorage.setItem('catalog', JSON.stringify(catalogBodyData.value))
+  sessionStorage.setItem('catalog', JSON.stringify(catalogBodyData.value))
 })
 const handleDeleteData = (data) => {
   catalogBodyData.value = catalogBodyData.value.filter(

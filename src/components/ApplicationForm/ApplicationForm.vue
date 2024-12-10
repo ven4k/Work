@@ -130,14 +130,14 @@ const handleUpdateTableData = (status, applicationId) => {
 };
 
 onMounted(() => {
-  const localStorageApplications = localStorage.getItem('applications')
-  const parsedLocalStorageApplications = JSON.parse(localStorageApplications)
-  if (localStorageApplications) {
-    applicationsBodyData.value = parsedLocalStorageApplications
+  const sessionStorageApplications = sessionStorage.getItem('applications')
+  const parsedsessionStorageApplications = JSON.parse(sessionStorageApplications)
+  if (sessionStorageApplications) {
+    applicationsBodyData.value = parsedsessionStorageApplications
   }
 })
 onUnmounted(() => {
-  localStorage.setItem('applications', JSON.stringify(applicationsBodyData.value))
+  sessionStorage.setItem('applications', JSON.stringify(applicationsBodyData.value))
 })
 </script>
 

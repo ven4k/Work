@@ -54,7 +54,7 @@ const cards = ref([
   },
 ]);
 onMounted(() => {
-  if (localStorage.getItem("isLogged")) {
+  if (sessionStorage.getItem("isLogged")) {
     isAdmin.value = true;
     role.value = 'Admin'
     cards.value.push({
@@ -83,8 +83,8 @@ const handleCloseModal = () => {
 };
 
 const handleClickExit = () => {
-  localStorage.removeItem("isLogged");
-  localStorage.removeItem("isLoggedMaster");
+  sessionStorage.removeItem("isLogged");
+  sessionStorage.removeItem("isLoggedMaster");
 
   router.push("/");
 };
@@ -124,7 +124,7 @@ const handleClickExit = () => {
 
 .exitBtn {
   position: absolute;
-  background-color: #ff6347;
+  background-color: #009879;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -136,7 +136,7 @@ const handleClickExit = () => {
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #e55039;
+    background-color: #017f66;
   }
 }
 .role {

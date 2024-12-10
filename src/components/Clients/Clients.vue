@@ -52,7 +52,7 @@ onMounted(() => {
 })
 onUnmounted(() => {
   store.commit('updateClients', clientsBodyData.value);
-  localStorage.setItem('clients', JSON.stringify(clientsBodyData.value))
+  sessionStorage.setItem('clients', JSON.stringify(clientsBodyData.value))
 })
 </script>
 
