@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted } from "vue";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
 import catalogTableHeader from "../../mock-data/catalogTableHeader.json";
 import { useNotification } from "@kyvg/vue3-notification";
@@ -38,6 +38,8 @@ const handleTogglePopup = () => {
 };
 const handleAddData = (data) => {
   catalogBodyData.value = [...catalogBodyData.value, data]
+  store.commit('updateCatalog', catalogBodyData.value)
+  sessionStorage.setItem('catalog', JSON.stringify(catalogBodyData.value))
   notify({
     duration: 3000,
     type: 'success',
@@ -47,14 +49,12 @@ const handleAddData = (data) => {
 onMounted(() => {
   catalogBodyData.value = store.state.catalog
 })
-onUnmounted(() => {
-  store.commit('updateCatalog', catalogBodyData.value)
-  sessionStorage.setItem('catalog', JSON.stringify(catalogBodyData.value))
-})
 const handleDeleteData = (data) => {
   catalogBodyData.value = catalogBodyData.value.filter(
     (el) => el.tariffId !== data.tariffId
   );
+  store.commit('updateCatalog', catalogBodyData.value)
+  sessionStorage.setItem('catalog', JSON.stringify(catalogBodyData.value))
 };
 </script>
 

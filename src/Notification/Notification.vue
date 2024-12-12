@@ -7,7 +7,7 @@
     <template #body="props">
       <div :class="['custom-notification', props.item.type]">
         <button class="close" @click="props.close">
-          <span class="fa fa-fw fa-close">X</span>
+          <i class="fa fa-fw fa-close"></i>
         </button>
         <div class="notification-title">{{ props.item.title }}</div>
         <div class="notification-content">{{ props.item.text }}</div>

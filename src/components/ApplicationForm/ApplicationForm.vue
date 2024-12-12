@@ -30,10 +30,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { ref, computed } from "vue";
 import { useNotification } from "@kyvg/vue3-notification";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
-import applications from "../../mock-data/applications.json";
 import applicationTableHeader from "../../mock-data/applicationsTableHeaders.json";
 import PopupWrapper from "../PopupWrapper/PopupWrapper.vue";
 import CreateApplication from "../CreateApplication/CreateApplication.vue";
@@ -45,6 +44,7 @@ const store = useStore()
 const clientsJSON = computed(() => store.state.clients)
 const employeesJSON = computed(() => store.state.employees)
 const catalogJSON = computed(() => store.state.catalog)
+const applications = computed(() => store.state.applications)
 
 defineProps({
   isAdmin: { type: Boolean, default: true }
@@ -52,7 +52,7 @@ defineProps({
 
 const { notify } = useNotification();
 const isOpenAddFormPopup = ref(false);
-const applicationsBodyData = ref(applications);
+const applicationsBodyData = ref(applications.value);
 
 const workType = ref([
   'Работа1',
@@ -103,6 +103,8 @@ const handleAddData = (data) => {
   };
 
   applicationsBodyData.value = [...applicationsBodyData.value, addData];
+  store.commit('updateApplications', applicationsBodyData.value)
+  sessionStorage.setItem('applications', JSON.stringify(applicationsBodyData.value))
   notify({
     duration: 3000,
     type: 'success',
@@ -118,6 +120,8 @@ const handleDeleteData = (data) => {
     type: "warn",
     duration: 3000,
   });
+  store.commit('updateApplications', applicationsBodyData.value)
+  sessionStorage.setItem('applications', JSON.stringify(applicationsBodyData.value))
 };
 
 const handleUpdateTableData = (status, applicationId) => {
@@ -127,18 +131,10 @@ const handleUpdateTableData = (status, applicationId) => {
     }
     return el;
   });
+  store.commit('updateApplications', applicationsBodyData.value)
+  sessionStorage.setItem('applications', JSON.stringify(applicationsBodyData.value))
 };
 
-onMounted(() => {
-  const sessionStorageApplications = sessionStorage.getItem('applications')
-  const parsedsessionStorageApplications = JSON.parse(sessionStorageApplications)
-  if (sessionStorageApplications) {
-    applicationsBodyData.value = parsedsessionStorageApplications
-  }
-})
-onUnmounted(() => {
-  sessionStorage.setItem('applications', JSON.stringify(applicationsBodyData.value))
-})
 </script>
 
 <style lang="scss"></style>

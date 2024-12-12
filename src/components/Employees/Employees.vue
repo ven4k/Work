@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted } from "vue";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
 import employeesTableHeaders from "../../mock-data/employeesTableHeaders.json";
 import { useNotification } from "@kyvg/vue3-notification";
@@ -38,6 +38,8 @@ const handleTogglePopup = () => {
 
 const handleAddData = (data) => {
   employeesBodyData.value = [...employeesBodyData.value, data]
+  store.commit('updateEmployees', employeesBodyData.value)
+  sessionStorage.setItem('employees', JSON.stringify(employeesBodyData.value))
   notify({
     duration: 3000,
     type: 'success',
@@ -48,6 +50,8 @@ const handleDeleteData = (data) => {
   employeesBodyData.value = employeesBodyData.value.filter(
     (el) => el.phone !== data.phone
   );
+  store.commit('updateEmployees', employeesBodyData.value)
+  sessionStorage.setItem('employees', JSON.stringify(employeesBodyData.value))
   notify({
     text: "Сотрудник удалён",
     type: 'warn',
@@ -57,8 +61,5 @@ const handleDeleteData = (data) => {
 onMounted(() => {
   employeesBodyData.value = store.state.employees
 })
-onUnmounted(() => {
-  store.commit('updateEmployees', employeesBodyData.value)
-  sessionStorage.setItem('employees', JSON.stringify(employeesBodyData.value))
-})
+
 </script>

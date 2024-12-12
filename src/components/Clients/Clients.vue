@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted  } from "vue";
 import TableWrapper from "../TableWrapper/TableWrapper.vue";
 import clientsTableHeaders from "../../mock-data/clientsTableHeaders.json";
 import { useNotification } from "@kyvg/vue3-notification";
@@ -37,11 +37,15 @@ const handleTogglePopup = () => {
 };
 const handleAddData = (data) => {
   clientsBodyData.value = [...clientsBodyData.value, data]
+  store.commit('updateClients', clientsBodyData.value);
+  sessionStorage.setItem('clients', JSON.stringify(clientsBodyData.value))
 };
 const handleDeleteData = (data) => {
   clientsBodyData.value = clientsBodyData.value.filter(
     (el) => el.phone !== data.phone
   );
+  store.commit('updateClients', clientsBodyData.value);
+  sessionStorage.setItem('clients', JSON.stringify(clientsBodyData.value))
   notify({
     text: "Клиент удалён",
   });
@@ -49,10 +53,6 @@ const handleDeleteData = (data) => {
 
 onMounted(() => {
   clientsBodyData.value = store.state.clients
-})
-onUnmounted(() => {
-  store.commit('updateClients', clientsBodyData.value);
-  sessionStorage.setItem('clients', JSON.stringify(clientsBodyData.value))
 })
 </script>
 
